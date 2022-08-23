@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Cep } from 'src/app/models/cep';
 import { Cliente } from 'src/app/models/cliente';
 import { CepServico } from 'src/app/servicos/cepServico';
+import { ClienteServico } from 'src/app/servicos/clienteServico';
 
 @Component({
   selector: 'app-form',
@@ -16,11 +17,17 @@ export class FormComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  public clientes:Cliente[] = ClienteServico.all()
   public cliente:Cliente = {} as Cliente
   public cep:Cep|undefined = {} as Cep
 
   public salvar(){
-    console.log(this.cliente)
+    ClienteServico.salvar(this.cliente)
+    this.listarClientes()
+  }
+  
+  private listarClientes() {
+    this.clientes = ClienteServico.all()
   }
 
   public async buscaViaCep(){
