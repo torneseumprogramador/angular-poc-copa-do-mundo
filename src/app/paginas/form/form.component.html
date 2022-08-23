@@ -1,16 +1,16 @@
-<form class="container">
+<form class="container" (submit)="salvar()">
     <div class="form-group">
         <label for="nome">Nome</label>
         <input type="text" class="form-control" [(ngModel)]="cliente.nome" id="nome" name="nome" placeholder="Digite seu nome">
     </div>
     <div class="form-group">
         <label for="email">Email</label>
-        <input type="email" class="form-control" [ngModel]="cliente.email" id="email" name="email" placeholder="Digite seu email">
+        <input type="email" class="form-control" [(ngModel)]="cliente.email" id="email" name="email" placeholder="Digite seu email">
     </div>
     <div class="row">
         <div class="form-group col-md-6">
             <label for="senha">Senha</label>
-            <input type="password" class="form-control" [ngModel]="cliente.senha" id="senha" name="senha" placeholder="Digite sua senha">
+            <input type="password" class="form-control" [(ngModel)]="cliente.senha" id="senha" name="senha" placeholder="Digite sua senha">
         </div>
         <div class="form-group col-md-6">
             <label for="csenha">Confirmação de Senha</label>
@@ -19,28 +19,28 @@
     </div>
     <div class="form-group col-md-2">
         <label for="cep">Cep</label>
-        <input type="text" class="form-control" [ngModel]="cliente.cep" name="cep" placeholder="Digite o CEP" id="cep">
+        <input type="text" class="form-control" (blur)="buscaViaCep()"  [(ngModel)]="cliente.cep" name="cep" placeholder="Digite o CEP" id="cep">
     </div>
     <div class="form-group">
         <label for="endereco">Endereço</label>
-        <input type="text" class="form-control" [ngModel]="cliente.endereco" name="endereco" id="endereco" placeholder="Digite o endereço">
+        <input type="text" class="form-control" [(ngModel)]="cliente.endereco" name="endereco" id="endereco" placeholder="Digite o endereço">
     </div>
     <div class="form-group">
         <label for="numero">Número</label>
-        <input type="text" class="form-control" id="numero" [ngModel]="cliente.numero" name="numero" placeholder="Digite o número">
+        <input type="text" class="form-control" id="numero" [(ngModel)]="cliente.numero" name="numero" placeholder="Digite o número">
     </div>
     <div class="form-group">
         <label for="bairro">Bairro</label>
-        <input type="text" class="form-control" id="bairro" [ngModel]="cliente.bairro" name="bairro" placeholder="Digite o bairro">
+        <input type="text" class="form-control" id="bairro" [(ngModel)]="cliente.bairro" name="bairro" placeholder="Digite o bairro">
     </div>
     <div class="row">
         <div class="form-group col-md-8">
             <label for="cidade">Cidade</label>
-            <input type="text" class="form-control" id="cidade" [ngModel]="cliente.cidade" name="cidade" placeholder="Digite a sua cidade">
+            <input type="text" class="form-control" id="cidade" [(ngModel)]="cliente.cidade" name="cidade" placeholder="Digite a sua cidade">
         </div>
         <div class="form-group col-md-4">
             <label for="estado">Estado</label>
-            <select id="estado" class="form-control" [ngModel]="cliente.estado" name="estado">
+            <select id="estado" class="form-control" [(ngModel)]="cliente.estado" name="estado">
                 <option selected>[Selecione]</option>
                 <option value="AC">Acre</option>
                 <option value="AL">Alagoas</option>
@@ -74,5 +74,5 @@
         </div>
     </div>
     <hr>
-    <button type="submit" (click)="mostrarModelo()" class="btn btn-primary">Cadastrar</button>
+    <button type="submit" class="btn btn-primary">Cadastrar</button>
 </form>
