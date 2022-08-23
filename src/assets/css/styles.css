@@ -11550,3 +11550,12 @@ html {
   font-size: 2.25rem;
   box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.1);
 }
+
+.active-menu{
+    background: #edbb2e;
+    color: #000!important;
+}
+
+.sidebar-nav-item a:hover{
+  background: #b58a0f!important;
+}
