@@ -1,0 +1,17 @@
+
+<table class="table" *ngIf="clientes && clientes.length > 0">
+    <thead>
+      <tr>
+        <th scope="col">Nome</th>
+        <th scope="col">Email</th>
+        <th scope="col">Endereço</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cliente of clientes">
+        <td>{{cliente.nome}}</td>
+        <td>{{cliente.email}}</td>
+        <td>{{cliente.endereco}}</td>
+      </tr>
+    </tbody>
+  </table>

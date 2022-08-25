@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Cep } from 'src/app/models/cep';
 import { Cliente } from 'src/app/models/cliente';
 import { CepServico } from 'src/app/servicos/cepServico';
@@ -12,23 +13,20 @@ import { ClienteServico } from 'src/app/servicos/clienteServico';
 })
 export class FormComponent implements OnInit {
 
-  constructor(private http:HttpClient) { }
+  constructor(
+    private http:HttpClient,
+    private router:Router
+  ) { }
 
   ngOnInit(): void {
-    this.buscaClienteApi();
   }
   
-  private async buscaClienteApi() {
-    this.clientes = await new ClienteServico(this.http).all()
-  }
-
-  public clientes:Cliente[]|undefined
   public cliente:Cliente = {} as Cliente
   public cep:Cep|undefined = {} as Cep
 
   public async salvar(){
     new ClienteServico(this.http).salvar(this.cliente)
-    this.buscaClienteApi()
+    this.router.navigateByUrl("/tabela")
   }
   
   public async buscaViaCep(){
