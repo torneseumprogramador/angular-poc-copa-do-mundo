@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Cep } from 'src/app/models/cep';
 import { Cliente } from 'src/app/models/cliente';
 import { CepServico } from 'src/app/servicos/cepServico';
+import { ClienteServico } from 'src/app/servicos/clienteServico';
 
 @Component({
   selector: 'app-form',
@@ -18,7 +19,7 @@ export class FormComponent implements OnInit {
   }
   
   private async buscaClienteApi() {
-    this.clientes = await this.http.get<Cliente[]>("http://localhost:8080/clientes.json").toPromise()
+    this.clientes = await new ClienteServico(this.http).all()
   }
 
   public clientes:Cliente[]|undefined
@@ -26,7 +27,7 @@ export class FormComponent implements OnInit {
   public cep:Cep|undefined = {} as Cep
 
   public async salvar(){
-    await this.http.post<Cliente>("http://localhost:8080/clientes.json", this.cliente).toPromise()
+    new ClienteServico(this.http).salvar(this.cliente)
     this.buscaClienteApi()
   }
   
