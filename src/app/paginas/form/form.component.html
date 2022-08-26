@@ -14,7 +14,7 @@
         </div>
         <div class="form-group col-md-6">
             <label for="csenha">Confirmação de Senha</label>
-            <input type="password" class="form-control" id="csenha" name="csenha" placeholder="Digite a confirmação de sua senha">
+            <input type="password" class="form-control" [(ngModel)]="csenha" id="csenha" name="csenha" placeholder="Digite a confirmação de sua senha">
         </div>
     </div>
     <div class="form-group col-md-2">
@@ -74,8 +74,6 @@
         </div>
     </div>
     <hr>
-    <div *ngIf="mensagem" class="alert alert-danger">
-        {{mensagem}}
-    </div>
+    <div *ngIf="mensagem" class="alert alert-danger" [innerHTML]="mensagem"></div>
     <button type="submit" class="btn btn-primary">Cadastrar</button>
 </form>
