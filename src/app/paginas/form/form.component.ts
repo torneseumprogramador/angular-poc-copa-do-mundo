@@ -23,10 +23,16 @@ export class FormComponent implements OnInit {
   
   public cliente:Cliente = {} as Cliente
   public cep:Cep|undefined = {} as Cep
+  public mensagem:String = ""
 
   public async salvar(){
-    new ClienteServico(this.http).salvar(this.cliente)
-    this.router.navigateByUrl("/tabela")
+    try{
+      await new ClienteServico(this.http).salvar(this.cliente)
+      this.router.navigateByUrl("/tabela")
+    }
+    catch(e:any){
+      this.mensagem = e.error.mensagem
+    }
   }
   
   public async buscaViaCep(){

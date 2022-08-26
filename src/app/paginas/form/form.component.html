@@ -74,5 +74,8 @@
         </div>
     </div>
     <hr>
+    <div *ngIf="mensagem" class="alert alert-danger">
+        {{mensagem}}
+    </div>
     <button type="submit" class="btn btn-primary">Cadastrar</button>
 </form>
